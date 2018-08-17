@@ -85,3 +85,9 @@ var addTwoNumbers = function (l1, l2) {
 
   return result;
 }
+
+// Linked List Palindrome?
+
+function isPalindrome (linkedList) {
+  
+}

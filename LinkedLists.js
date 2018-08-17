@@ -87,7 +87,28 @@ var addTwoNumbers = function (l1, l2) {
 }
 
 // Linked List Palindrome?
+// Assume we have a stack class implemented (Stack)
 
-function isPalindrome (linkedList) {
-  
+function isPalindrome (headNode) {
+  var slow = headNode;
+  var fast = headNode;
+  var Stack = new Stack();
+
+  while (fast !== null && fast.next !== null) {
+    Stack.push(slow.value)
+
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  Stack.pop();
+
+  while (Stack.length !== 0) {
+    if (Stack.pop() !== slow.value) {
+      return false;
+    }
+    slow = slow.next;
+  }
+
+  return true;
 }

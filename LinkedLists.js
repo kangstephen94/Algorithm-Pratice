@@ -112,3 +112,48 @@ function isPalindrome (headNode) {
 
   return true;
 }
+
+
+//Intersecting Linked Lists
+
+function findMergeNode(headA, headB) {
+  //determine if there is an intersection by checking the last node in each of the linkedlists
+  var count1 = 0;
+  var currentA = headA
+  while (currentA.next !== null) {
+    currentA = currentA.next;
+    count1 += 1;
+  }
+
+  var count2 = 0;
+  var currentB = headB
+  while (currentB.next !== null) {
+    currentB = currentB.next;
+    count2 += 1;
+  }
+
+  if (currentA !== currentB) {
+    return false
+  }
+
+  const difference = Math.abs(count1 - count2)
+
+  for (var i = 0; i < difference; i++) {
+    if (count1 > count2) {
+      headA = headA.next
+    } else if (count2 > count1) {
+      headB = headB.next
+    }
+  }
+
+  while (headA !== null && headB !== null) {
+    if (headA === headB) {
+      return true;
+    }
+
+    headA = headA.next
+    headB = headB.next
+  }
+
+  return false;
+}

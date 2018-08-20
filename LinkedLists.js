@@ -148,7 +148,7 @@ function findMergeNode(headA, headB) {
 
   while (headA !== null && headB !== null) {
     if (headA === headB) {
-      return true;
+      return headA.val
     }
 
     headA = headA.next
@@ -156,4 +156,48 @@ function findMergeNode(headA, headB) {
   }
 
   return false;
+}
+
+// If there is a intersection
+function findMergeNode(headA, headB) {
+  //determine if there is an intersection by checking the last node in each of the linkedlists
+  var currentA = headA;
+  var currentB = headB;
+
+  //Do till the two nodes are the same
+  while (currentA != currentB) {
+    //If you reached the end of one list start at the beginning of the other one
+    //currentA
+    if (currentA.next == null) {
+      currentA = headB;
+    } else {
+      currentA = currentA.next;
+    }
+    //currentB
+    if (currentB.next == null) {
+      currentB = headA;
+    } else {
+      currentB = currentB.next;
+    }
+  }
+  return currentB.data;
+}
+
+//Find where the circular linked list starts
+
+function circularNode(head) {
+  var currentA = head;
+  var currentB = head;
+  while (currentA !== currentB) {
+    currentA = currentA.next.next
+    currentB = currentB.next
+  }
+
+  currentB = head;
+  while (currentA !== currentB) {
+    currentA = currentA.next
+    currentB = currentB.next
+  }
+  
+  return currentA.val
 }

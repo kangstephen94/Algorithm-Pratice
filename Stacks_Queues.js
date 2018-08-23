@@ -43,3 +43,45 @@ class Stack {
 // stack.push(1);
 // stack.max();
 // Stack.min();
+
+//Stack of Plates
+
+// class setofStacks {
+//   constructor () {
+//     this.stack = [];
+//   }
+// }
+
+
+//Queue using two stacks
+
+class StackQueue {
+  constructor () {
+    this.in = Stack.new ();
+    this.out = Stack.new ();
+  }
+
+  enqueue (element) {
+   return this.in.push(element)
+  }
+
+  dequeue () {
+    if (this.out.length === 0) {
+      while (this.in.length > 0) {
+        this.out.push(this.pop());
+      }
+    }
+    return this.out.pop();
+  }
+}
+
+//testing
+
+const stackq = new StackQueue();
+stackq.enqueue(2);
+stackq.enqueue(5);
+stackq.enqueue(6);
+stackq.enqueue(7);
+
+stackq.dequeue();
+stackq.dequeue();

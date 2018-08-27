@@ -85,3 +85,21 @@ stackq.enqueue(7);
 
 stackq.dequeue();
 stackq.dequeue();
+
+
+// Sort Stack, smallest elements on the top
+
+function sortStack (stackA) {
+  var stackB = new Stack();
+  while (!stackA.isEmpty()) {
+    const int = stackA.pop();
+    while (!stackB.isEmpty() && stackB.peek() > int){
+      stackA.push(stackB.pop());
+    }
+    stackB.push(int);
+  }
+
+  while (!stackB.isEmpty()) {
+    stackA.push(stackB.pop())
+  }
+}
